@@ -1,6 +1,10 @@
-const express = require('express');
+import express from 'express';
+import path from 'path';
+import initDatabase from './db/db.js';
+import router from './routes/index.js';
+
 const app = express();
-const path = require('path');
+const __dirname = import.meta.dirname;
 
 app.use(express.static(path.join(__dirname, "public")));
 
@@ -8,11 +12,11 @@ app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }))
 
-const indexRoutes = require('./routes/index');
-
 const PORT = process.env.PORT || 3000;
 
-app.use('/', indexRoutes);
+await initDatabase();
+
+app.use('/', router);
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);

@@ -25,7 +25,4 @@ const postMsg = (req, res) => {
     res.redirect("/");
 }
 
-module.exports = {
-    getMsg,
-    postMsg
-};
+export default { getMsg, postMsg };
