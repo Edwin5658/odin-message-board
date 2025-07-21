@@ -1,0 +1,206 @@
+:root {
+  --max-container-width: 1400px;
+  --background-color: #fef0d6;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+  margin: 0px;
+  background-color: rgb(10, 11, 37);
+  color: white;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+li {
+  list-style: none;
+  padding: none;
+  margin: none;
+}
+
+ul {
+  margin: 0px;
+  padding-left: 0px;
+}
+
+header, main, .form-wrapper {
+  padding-left: 128px;
+  padding-right: 128px;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+header > h1 {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: var(--max-container-width);
+}
+
+h2, p { 
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+h2, .text {
+  text-wrap: wrap;
+  overflow-wrap: break-word;
+  
+  word-break: break-all;
+}
+
+h2 {
+  max-width: 60%;
+}
+
+ul {
+  max-width: var(--max-container-width);
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  /*
+    TODO:
+    https://css-irl.info/oh-no-overflow/
+  */
+  overflow-y: auto;
+  max-height: 70vh;
+
+  margin-bottom: 32px;
+}
+
+li {
+  border: 1px solid;
+  border-radius: 4px;;
+  padding: 16px;
+}
+
+.li-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 16px;
+}
+
+.li-header > p {
+  color: rgb(144, 144, 144);
+  margin-left: 32px;
+}
+
+.text {
+  font-size: 20px;
+}
+
+.form-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+form {
+  max-width: var(--max-container-width);
+
+  display: flex;
+  gap: 16px;
+
+  font-size: 20px;
+
+  flex-wrap: wrap;
+  align-items: flex-end;
+}
+
+form div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+form input[type="text"] {
+  border: 0px;
+  border-bottom: 2px solid black;
+  border-radius: 4px;
+  outline-offset: 3px;
+
+  padding: 8px;
+
+  border: 2px solid transparent;
+  transition-duration: 200ms;
+  transition-property: border;
+  transition-timing-function: ease;
+
+  box-shadow: 0px 0px 4px 0px black inset;
+}
+
+form input[type="text"]:hover {
+  border: 2px solid hsl(240, 25%, 42%);
+  background-color: rgb(218, 218, 218);
+}
+
+form input[type="text"]:invalid {
+  border: 2px solid hsl(6, 70%, 41%);
+}
+
+form button {
+  border: none;
+  padding: 8px 20px;
+  border-radius: 4px;
+
+  cursor: pointer;
+  flex-grow: 1;
+
+  border: 1px solid transparent;
+  transition-duration: 200ms;
+  transition-property: transform background-color color;
+  transition-timing-function: ease;
+}
+
+form button:hover {
+  transform: scale(1.07);
+  background-color: hsl(247, 18%, 45%);
+  color: white;
+
+  box-shadow: 0px 0px 4px 1px lightgrey;
+}
+
+form button:active {
+  transform: scale(1.03);
+}
+
+@media (width < 1200px) {
+  header, main, .form-wrapper {
+    padding-left: 64px;
+    padding-right: 64px;
+  }
+
+  h2 {
+    font-size: 18px;
+  }
+
+  .text {
+    font-size: 14px;
+  }
+}
+
+@media (width < 680px) {
+  header, main, .form-wrapper {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+  .li-header > p {
+    font-size: 10px;
+  }
+}

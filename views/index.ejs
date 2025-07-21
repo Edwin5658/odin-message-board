@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Mini Message Board</title>
+  </head>
+  <body>
+    <header>
+      <h1>Mini MessageBoard</h1>
+    </header>
+
+    <main>    
+      <ul>
+        <% messages.forEach(message => { %>
+          <li>
+            <div class="li-header">
+              <h2><%= message.user %> </h2>
+              <p><%= message.time %> </p>
+            </div>
+
+            <p class="text"><%= message.text %></p>
+          </li>
+        <% }); %>
+      </ul>
+    </main>
+
+    <section class="form-wrapper">
+      <%- include("form") %>
+    </section>
+  </body>
+</html>
