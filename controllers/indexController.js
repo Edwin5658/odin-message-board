@@ -1,27 +1,12 @@
-const createMsg = (user, text) => {
-    return {
-        user: user,
-        text: text,
-        time: new Date().toLocaleDateString("en-US", {
-            weekday: "long",
-            year: "numeric",
-            month: "long",
-            day: "numeric"
-    })
-    }
-}
-const messages = [
-  createMsg("Edwin", "Hello World!"),
-];
+import queries from "../db/queries.js";
 
-const getMsg = (req, res) => {
+const getMsg = async (req, res) => {
+    const messages = await queries.getAllMessages();
     res.render("index", { messages: messages });
 };
 
-const postMsg = (req, res) => {
-    messages.push(
-        createMsg(req.body.user, req.body.text)
-    );  
+const postMsg = async (req, res) => {
+    await queries.insertMessage(req.body.user, req.body.text);
     res.redirect("/");
 }
 

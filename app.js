@@ -1,10 +1,12 @@
 import express from 'express';
 import path from 'path';
-import initDatabase from './db/db.js';
 import router from './routes/index.js';
+import { initDB } from './db/initdb.js';
 
 const app = express();
 const __dirname = import.meta.dirname;
+
+await initDB();
 
 app.use(express.static(path.join(__dirname, "public")));
 
@@ -13,8 +15,6 @@ app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }))
 
 const PORT = process.env.PORT || 3000;
-
-await initDatabase();
 
 app.use('/', router);
 

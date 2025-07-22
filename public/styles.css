@@ -73,10 +73,6 @@ ul {
   flex-direction: column;
   gap: 8px;
 
-  /*
-    TODO:
-    https://css-irl.info/oh-no-overflow/
-  */
   overflow-y: auto;
   max-height: 70vh;
 
